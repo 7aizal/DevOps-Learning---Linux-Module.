@@ -1,0 +1,25 @@
+I started by connecting to the Bandit server and landing in the home directory of bandit0.
+
+First, I wanted to see what files were there, so I ran:
+
+
+-ls
+This showed me there was a file called readme.
+
+To see what was inside the file, I used:
+
+
+-cat readme
+When I displayed the contents, I found a message congratulating me and, most importantly, it included the password for the next level:
+
+
+The password you are looking for is: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+With this password, I was ready to log in as bandit1 to continue to the next level.
+
+
+
+
+
+
+
+
