@@ -1,0 +1,23 @@
+After logging in as bandit5, I went into the inhere directory, which contained 20 subdirectories named maybehere00 through maybehere19.
+
+Each of these folders potentially held the password, but checking them one by one would be inefficient. I listed all the directories with ls -l to get more details, but that alone wasn’t enough.
+
+To narrow it down, I used the find command with some specific conditions:
+
+The file had to be readable,
+
+Its size had to be exactly 1033 bytes, and
+
+It shouldn’t be executable.
+
+The command I used was:
+
+find . -type f -readable -size 1033c ! -executable
+This returned one result:
+./maybehere07/.file2
+
+I opened that file with cat and found the password for the next level:
+
+HWsMrQXe8KqdUmM9JNsGNuVZ1T5Tnfjp
+
+With the correct file identified, I was ready to log in as bandit6.
