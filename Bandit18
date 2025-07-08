@@ -1,0 +1,18 @@
+After logging in as bandit17, I was prompted to find the next password, which was supposedly stored in a file named readme. However, after logging in and running:
+
+
+cat readme
+I got an error:
+No such file or directory
+
+It turned out the issue wasn't the file—it was the logout behavior of the shell. The level’s actual trick was that logging into bandit18 immediately logs you out, so the only way to run a command was to pass it directly into the SSH command.
+
+So instead of logging in interactively, I executed the command remotely like this:
+
+
+ssh bandit18@bandit.labs.overthewire.org -p 2220 "cat readme"
+This worked and returned the password for the next level:
+
+
+cGWpMAKXVMbDUNgPAVJbwYuGHVn9zL3j8
+With that, I was ready to connect as bandit18.
