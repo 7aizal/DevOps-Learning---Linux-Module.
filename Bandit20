@@ -1,0 +1,34 @@
+After logging in as bandit19, my goal was to send the password for bandit20 to a listening service that would then return the password for bandit21.
+
+I found a setuid binary named suconnect in the home directory. This file was owned by bandit20, so it was likely used to securely send a message to bandit21’s system.
+
+Step 1: Prepare a Listener
+At first, I attempted to use nc (netcat) to open a listener on a port:
+
+
+nc -l -p 786
+But I received Permission denied, likely due to restricted low ports or nc capabilities.
+
+Eventually, I tried a higher port:
+
+
+nc -l -p 1786
+This worked—I was able to run a listener that would print anything sent to it.
+
+Step 2: Test the suconnect Binary
+I examined the binary and discovered it was executable and ran with bandit20’s privileges.
+
+So I ran:
+
+
+./suconnect 1786
+It prompted me to enter the bandit20 password, which I pasted in:
+
+
+oQXahG8ZJ0VMN9Ghs7iOWsCfZyXOUbY0
+The script read the password, confirmed it, and sent the next one through the socket. On the nc listener, I received:
+
+
+EeoUMCra2q0dSkYj561DX7s1CpBuOBt
+That was the password for bandit21.
+
