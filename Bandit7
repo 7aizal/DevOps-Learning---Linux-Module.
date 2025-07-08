@@ -1,0 +1,27 @@
+After logging in as bandit6, I checked the home directory and found only the usual hidden files like .bashrc and .profile, with no obvious password file in sight.
+
+The challenge required me to find a file that met three conditions:
+
+It’s owned by user bandit7
+
+It belongs to group bandit6
+
+Its size is exactly 33 bytes
+
+To locate this file system-wide, I ran a find command that searched for files with the right ownership and size:
+
+find / -user bandit7 -group bandit6 -size 33c 2>/dev/null
+
+Most directories threw permission errors (which were hidden using 2>/dev/null), but eventually I found a match in:
+
+/var/lib/dpkg/info/bandit7.password
+
+I navigated to that location and attempted to read it. At first, I tried splitting the filename by mistake (cat bandit7 password), which didn’t work. Then I realized it was a single filename with a dot, so I used:
+
+cat bandit7.password
+
+That revealed the password for the next level:
+
+morbNTDKSW6j1Uc0ymOdMaLnOlFVAaJ
+
+With that, I was ready to move on to Bandit Level 7.
