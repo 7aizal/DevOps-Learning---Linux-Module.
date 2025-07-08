@@ -1,0 +1,19 @@
+
+
+After logging in as bandit2, I ran:
+
+
+ls
+This showed a file named:
+
+
+spaces in this filename
+Since the filename had spaces, I knew I couldn't just type it directly with cat or it would interpret each word as a separate argument. So, I wrapped the filename in quotes to treat it as a single string:
+
+
+cat "spaces in this filename"
+That worked, and it printed the password for the next level:
+
+
+MNK8KN3Usiio4lPRUEoDFPqfxLPLSmx
+After that, I exited the session to move on to Bandit Level 3
