@@ -1,0 +1,16 @@
+After logging in as bandit11, I found a file named data.txt. When I opened it, the contents were clearly readable but didn't make sense—something like:
+
+Gur cnffjbeq vf 7k16JArUVv5LxVuJfsSVdbbtaHGLw9D4
+
+I recognized this as ROT13 encryption—a simple letter substitution cipher that shifts each character 13 places in the alphabet.
+
+To decode it, I used the tr command, which translates characters. Specifically, I used:
+
+cat data.txt | tr A-Za-z N-ZA-Mn-za-m
+
+This translated the ROT13-encoded message into:
+
+The password is 7x16WNeHi5YkIhWsfFIqoognUTyj9Q4
+
+That was the password for the next level. With that, I was ready to log in as bandit12.
+
