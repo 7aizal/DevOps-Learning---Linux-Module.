@@ -1,0 +1,15 @@
+After logging in as bandit10, I saw a file named data.txt. I opened it and noticed that the contents looked like Base64-encoded text—it ended with ==, which is a strong hint.
+
+To confirm, I ran:
+
+base64 data.txt
+
+This returned a decoded string, further confirming it was indeed Base64-encoded. To get the actual password, I decoded it using:
+
+base64 -d data.txt
+
+The output revealed the password:
+
+dtR19fZkB0RRsDFGSCg2RWnwpNVj3qRr
+
+With that, I was ready to move on to Bandit Level 11.
