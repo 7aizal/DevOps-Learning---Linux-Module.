@@ -1,0 +1,21 @@
+After logging in as bandit16, I found two files in the home directory:
+
+passwords.old
+
+passwords.new
+
+The challenge hinted that only one line had changed between the two versions, and the new password was likely the one that was added or modified.
+
+To find the difference, I used the diff command:
+
+
+diff passwords.new passwords.old
+The output pointed to line 42 and showed the line that existed in the new file but not in the old one:
+
+
+< x2gLTtTjFwMOhQ8oWNbMN362QKxfRqGL0
+That line was the password for the next level:
+
+
+x2gLTtTjFwMOhQ8oWNbMN362QKxfRqGL0
+With that, I was ready to log in as bandit17.
