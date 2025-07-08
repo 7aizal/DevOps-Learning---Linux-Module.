@@ -1,0 +1,51 @@
+After logging in as bandit15, I found the password for the next level inside the usual file:
+
+
+/etc/bandit_pass/bandit16
+I copied it:
+8xCjmnqoKbGLhHFAZlGE5Tmu4M2tkJxQo
+
+The challenge required me to connect to a service running on localhost over SSL, on one of the ports between 31000 and 32000. The goal was to find the service that accepted the password and returned an SSH private key for the next level.
+
+Step 1: Port Scanning
+I used nmap to find open ports in the target range:
+
+
+nmap localhost -p 31000-32000
+This returned a few open ports, including 31046, 31518, 31691, 31790, and 31960.
+
+Step 2: Testing Services over SSL
+Using ncat, I tested each port over SSL:
+
+
+ncat --ssl localhost <port>
+Eventually, I hit success on port 31790. It prompted me for a password. I entered the one from /etc/bandit_pass/bandit16, and the server responded with:
+
+
+Correct!
+-----BEGIN RSA PRIVATE KEY-----
+...
+-----END RSA PRIVATE KEY-----
+This was the SSH private key for bandit17.
+
+Step 3: Preparing the Key for Use
+I copied the entire private key into a file in /tmp, using nano:
+
+
+nano /tmp/private.key
+After saving it, I had to set the right permissions for SSH to accept it:
+
+
+chmod 700 private.key
+Step 4: Logging in as bandit17
+Initially, I tried:
+
+
+ssh bandit17@localhost -i private.key
+But this failed because Bandit SSH runs on port 2220, not the default port 22.
+
+So I corrected it with:
+
+
+ssh -i private.key bandit17@bandit.labs.overthewire.org -p 2220
+This time, the login was successful, and I was now bandit17.
