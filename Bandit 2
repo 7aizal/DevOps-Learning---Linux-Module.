@@ -1,0 +1,21 @@
+After logging in as bandit1, I ran:
+
+
+ls
+This showed me a single file named - (just a dash). At first glance, that looked odd—it’s easy to mistake it for an option flag, which made me realize I couldn’t access it the normal way.
+
+At first, I tried:
+
+
+cat ./
+That gave me an error: Is a directory, which made sense because ./ just refers to the current directory.
+
+Then I tried:
+
+
+cat ./-
+By specifying the file with a relative path (./-), I avoided confusing the dash with a command-line option. That worked—it printed out the password for the next level:
+
+
+263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+Now I’m ready to log in as bandit2 using this password.
