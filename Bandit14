@@ -1,0 +1,21 @@
+After logging in as bandit14, I found the password for the next level inside the usual file:
+
+/etc/bandit_pass/bandit15
+
+I opened it and copied the password:
+8xCjmnqoKbGLhHFAZlGE5Tmu4M2tkJxQo
+
+The challenge required me to connect to localhost on port 30001 using SSL encryption, and retrieve the password for bandit15. My first attempts using socat and ncat were incorrect because they either lacked the right arguments or misused protocol names.
+
+After a few trial-and-error attempts and confirming that SSL should be used properly with ncat, I finally ran:
+
+ncat --ssl localhost 30001
+
+That successfully established an encrypted connection.
+
+When prompted, I pasted the password for bandit14, and the service responded with:
+
+Correct!
+kSuvwM7Q7BLVyCM4GBPvCvT1BfWRy0Dx
+
+That was the password for bandit15, and I was ready to move on.
