@@ -1,0 +1,15 @@
+After logging in as bandit7, I found a file named data.txt in the home directory. The level hint mentioned that the password for the next level is the only line in the file that occurs exactly once.
+
+I knew that manually scanning a large file wasn’t efficient, so I used the grep command to search for the word "millionth", which was likely a clue:
+
+grep millionth data.txt
+
+This returned a single line:
+
+millionth dfWVzFQi4Um0wNFbFOe9RoWskMLg7eEc
+
+That line showed the word "millionth" followed by the actual password:
+
+dfWVzFQi4Um0wNFbFOe9RoWskMLg7eEc
+
+With that, I was ready to move on to Bandit Level 8.
