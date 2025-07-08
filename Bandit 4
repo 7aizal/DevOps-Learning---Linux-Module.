@@ -1,0 +1,16 @@
+After logging in as bandit3, I listed the contents of the home directory using ls. 
+
+I saw a folder named inhere, so I changed into that directory with cd inhere/.
+
+Inside, I wanted to see all files, including hidden ones, so I used 
+
+ls -a. That revealed a hidden file named 
+...Hiding–From–You.
+
+Since the file name started with dots and included dashes, I used 
+cat ...Hiding–From–You to read its contents. 
+It worked, and I retrieved the password for the next level:
+
+2WmrDFrmJIq3IPxneAaMGhap0pFhF3NJ
+
+I was then ready to move on to Bandit Level 4.
