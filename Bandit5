@@ -1,0 +1,13 @@
+After logging in as bandit4, I saw a directory named inhere and navigated into it. Inside, there were multiple files named with a dash prefix, like -file00, -file01, and so on up to -file09.
+
+Because the filenames started with a dash (-), the shell treated them as command-line options, which caused errors when I tried reading them with a basic cat command.
+
+To get around that, I used cat -- -filename or more reliably, prefixed the filename with ./, like this: cat ./-file07.
+
+I checked each file one by one until I reached -file07. It was the only one that returned readable text instead of gibberish or binary-looking output.
+
+Inside -file07, I found the password for the next level:
+
+4oQXYFxzZ0E00Q5Tw8I1Fb8bJ1XxUGUw
+
+With the correct file identified, I was ready to log in as bandit5.
