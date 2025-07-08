@@ -1,0 +1,11 @@
+After logging in as bandit9, I saw a file named data.txt. The hint mentioned that the password was stored in binary or non-human-readable format, so I couldn’t simply use cat to read it.
+
+To extract human-readable strings from the file, I used the strings command, which filters out binary and displays only recognizable text. I knew the password was likely marked with something unique, so I piped the output through grep to search for lines containing ==:
+
+strings data.txt | grep "=="
+
+That showed several lines, but the one with the actual password stood out:
+
+FGUW5iilVJrxX9kMYMmLN4MgbpfMiqey
+
+That was the password for the next level, and with it, I was ready to log in as bandit10.
