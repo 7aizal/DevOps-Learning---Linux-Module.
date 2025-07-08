@@ -1,0 +1,36 @@
+After logging in as bandit18, I found a file named bandit20-do in the home directory. The goal was to read the contents of /etc/bandit_pass/bandit20, which I couldn’t access directly due to permission restrictions.
+
+Step 1: Checking Permissions
+I verified that trying to read the file directly using:
+
+bash
+Copy
+Edit
+cat /etc/bandit_pass/bandit20
+resulted in a “Permission denied” error. Running id showed I was user bandit19 with no access to bandit20’s files.
+
+Step 2: Investigating the Setuid Binary
+I then ran:
+
+
+file bandit20-do
+This revealed it was a setuid ELF executable, which allows running a command as another user—in this case, as bandit20.
+
+Running the binary without arguments confirmed the syntax:
+
+
+./bandit20-do <command>
+Step 3: Running the Command as bandit20
+I used the binary to run id and confirmed it executed with bandit20's privileges:
+
+
+./bandit20-do id
+Then, I used it to read the password file:
+
+
+./bandit20-do cat /etc/bandit_pass/bandit20
+This successfully printed the password for the next level:
+
+
+oQXahG8ZJ0VMN9Ghs7iOWsCfZyXOUbY0
+With that, I was ready to log in as bandit20.
