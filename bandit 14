@@ -1,0 +1,34 @@
+fter logging in as bandit13, I found a file named sshkey.private in the home directory. The goal was to use this private key to log into the bandit14 account.
+
+Step 1: Attempting SSH with Private Key
+I first tried connecting with:
+
+css
+Copy
+Edit
+ssh -i sshkey.private bandit14@localhost
+That failed because the Bandit server doesn’t use the default SSH port 22—it uses port 2220.
+
+So I updated the command:
+
+css
+Copy
+Edit
+ssh -i sshkey.private bandit14@localhost -p 2220
+This time, the connection worked, and I was able to log in as bandit14.
+
+Step 2: Retrieving the Password
+Once in the bandit14 account, I read the password file as usual:
+
+bash
+Copy
+Edit
+cat /etc/bandit_pass/bandit14
+The password I received was:
+
+nginx
+Copy
+Edit
+MU4VWeTyJk8RQfo1qmcoBPAhL7DLCPvS
+With this, I was ready to proceed to Bandit Level 15.
+
