@@ -1,0 +1,25 @@
+After logging in as bandit12, I was directed to work in the /tmp directory (specifically a subdirectory named twelve), which contained a file called data3.bz2.
+
+The file was heavily compressed and nested inside multiple archive formats. I had to extract and decompress the file step by step to finally reach the password. Here’s what I did:
+
+I decompressed data3.bz2 using bzip2 -d.
+
+This gave me a data3 file, which I inspected with file and saw it was a gzip archive.
+
+I renamed it to data4.gz and decompressed it using gzip -d.
+
+The result was a tar archive (data4), so I extracted it with tar xf.
+
+This unpacked a new .tar file (data5.bin), which I extracted again with tar xf.
+
+This gave me a data6.bin file, which was another bzip2 file. I renamed it to data6.bz2 and decompressed it.
+
+That gave me data7, another tar archive. I extracted it, which led to data8.bin, a gzip file.
+
+I renamed it to data9.gz, decompressed it, and finally got a plain text file called data9.
+
+I opened data9 with cat, and it contained the password for the next level:
+
+F5owF5oCbAil1iOH8J2eUks2vdTDwAn
+
+After a long chain of decompression steps, I was ready to log in as bandit13.
