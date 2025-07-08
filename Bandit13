@@ -1,0 +1,25 @@
+After logging in as bandit13, I found a file in the home directory named sshkey.private, which was a private SSH key.
+
+The goal for this level was to log into the bandit14 account using that key. I couldn’t use a password—SSH key authentication was required.
+
+To proceed, I used the ssh command with the -i option to specify the key file. Initially, I tried:
+
+ssh -i sshkey.private bandit14@localhost
+
+But this failed because SSH tried to connect through the default port 22, which isn’t used in the Bandit game.
+
+So I re-ran the command with the correct port (2220):
+
+ssh -i sshkey.private bandit14@localhost -p 2220
+
+This successfully connected me to the bandit14 account.
+
+Once logged in, I retrieved the password for the next level by reading the usual password file:
+
+cat /etc/bandit_pass/bandit14
+
+The password was:
+
+MU4JVVeJYKs8RKAgV3hBLvdcfk7xLY4a
+
+With that, I was ready to move on to Bandit Level 14.
